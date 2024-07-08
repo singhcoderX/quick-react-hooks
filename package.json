@@ -1,6 +1,6 @@
 {
   "name": "quick-react-hooks",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "\"quick-react-hooks\" is a collection of reusable and easy-to-use React hooks designed to simplify common tasks in React applications.",
   "main": "dist/index.js",
   "scripts": {
