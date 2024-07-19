@@ -49,7 +49,7 @@ A custom React hook that returns the height of a referenced HTML element. It upd
 ### Example
 ```
 import React, { useRef } from "react";
-import useElementHeight from "quick-react-hooks";
+import { useElementHeight } from "quick-react-hooks";
 
 const App = () => {
   const elementRef = useRef(null);
