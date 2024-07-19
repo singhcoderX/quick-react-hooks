@@ -43,6 +43,31 @@ The hook `useMediaQueryScreen` uses the following breakpoints:
 - large: (min-width: 980px) and (max-width: 1259px)
 - largeplus: (min-width: 1260px)
 
+## useElementHeight
+A custom React hook that returns the height of a referenced HTML element. It updates the height whenever the element's size changes.
+
+### Example
+```
+import React, { useRef } from "react";
+import useElementHeight from "quick-react-hooks";
+
+const App = () => {
+  const elementRef = useRef(null);
+  const height = useElementHeight(elementRef);
+
+  return (
+    <div>
+      <div ref={elementRef} style={{ padding: "20px", border: "1px solid black" }}>
+        This is a resizable element. Try changing its size and see the height update!
+      </div>
+      <p>The height of the element above is: {height}px</p>
+    </div>
+  );
+};
+
+export default App;
+```
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
