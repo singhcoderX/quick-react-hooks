@@ -64,6 +64,44 @@ const App = () => {
     </div>
   );
 };
+```
+
+
+## useVisible
+The `useVisible` hook is a custom React hook designed to detect the visibility of a target element within the viewport (or a specified container). It leverages the Intersection Observer API, which efficiently monitors the visibility of elements as they enter or exit the viewport.
+
+### Example
+```
+import React, { useRef } from "react";
+import { useVisible } from "quick-react-hooks";
+
+const App = () => {
+  const targetRef = useRef(null);
+  const isVisible = useVisible({ targetRef });
+
+  return (
+    <div style={{ height: "200vh", padding: "20px" }}>
+      <h1>Scroll down to see the target element</h1>
+      <div style={{ height: "100vh", background: "#f0f0f0" }} />
+      <div
+        ref={targetRef}
+        style={{
+          height: "100px",
+          background: isVisible ? "green" : "red",
+          transition: "background-color 0.3s",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "24px",
+          color: "#fff",
+        }}
+      >
+        {isVisible ? "I am visible!" : "I am not visible!"}
+      </div>
+      <div style={{ height: "100vh", background: "#f0f0f0" }} />
+    </div>
+  );
+};
 
 export default App;
 ```
