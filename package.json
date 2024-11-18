@@ -7,6 +7,13 @@
     "build": "webpack"
   },
   "author": "singhcoderx",
+  "keywords": [
+    "react",
+    "hooks",
+    "npm",
+    "utility",
+    "javascript"
+  ],
   "license": "ISC",
   "devDependencies": {
     "@types/react": "^18.3.3",
