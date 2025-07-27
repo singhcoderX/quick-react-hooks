@@ -212,6 +212,54 @@ function UserProfile() {
 - Ensure `asyncFn` returns a Promise to work correctly with the hook.
 - Use the `deps` array to control when the `execute` function is recreated, similar to `useCallback`.
 
+## useLocalStorage
+
+A custom React hook for managing state that persists in the browser’s `localStorage`, synchronizing state across page reloads with support for any JSON-serializable data type.
+
+### Example
+
+```javascript
+import { useLocalStorage } from "quick-react-hooks";
+
+function MyComponent() {
+  const [name, setName] = useLocalStorage({
+    key: "name",
+    initialValue: "John",
+  });
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={name || ""}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <p>Stored Name: {name || "No name set"}</p>
+    </div>
+  );
+}
+```
+
+### API
+
+#### `useLocalStorage({ key, initialValue })`
+
+##### Parameters
+
+- **`key`**: `string` - The key for the `localStorage` entry.
+- **`initialValue`** (optional): `T | undefined` - The initial value if no value exists in `localStorage`.
+
+##### Returns
+
+- **`value`**: `T | undefined` - The current value from `localStorage` or `initialValue`.
+- **`setValue`**: `React.Dispatch<React.SetStateAction<T | undefined>>` - Function to update the state.
+
+### Notes
+
+- Uses `JSON.stringify` and `JSON.parse`, so values must be JSON-serializable.
+- Handles errors (e.g., invalid JSON, storage limits) by logging and falling back to `initialValue`.
+- `setValue` supports direct values or updater functions, like `useState`.
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
