@@ -260,6 +260,66 @@ function MyComponent() {
 - Handles errors (e.g., invalid JSON, storage limits) by logging and falling back to `initialValue`.
 - `setValue` supports direct values or updater functions, like `useState`.
 
+## useToggle
+
+A simple React hook for toggling a boolean state value. It provides a convenient way to manage toggle states like modals, dropdowns, or any on/off functionality.
+
+### Example
+
+```javascript
+import { useToggle } from "quick-react-hooks";
+
+function MyComponent() {
+  const [isOpen, toggleOpen] = useToggle();
+
+  return (
+    <div>
+      <button onClick={toggleOpen}>
+        {isOpen ? "Close" : "Open"}
+      </button>
+      {isOpen && <div>Content is visible!</div>}
+    </div>
+  );
+}
+```
+
+### API
+
+#### `useToggle(initial)`
+
+##### Parameters
+
+- **`initial`** (optional): `boolean` - The initial state value. Defaults to `false`.
+
+##### Returns
+
+A tuple with the following elements:
+
+- **`state`**: `boolean` - The current boolean state value.
+- **`toggle`**: `() => void` - A function to toggle the state between `true` and `false`.
+
+### Example with Initial Value
+
+```javascript
+import { useToggle } from "quick-react-hooks";
+
+function MyComponent() {
+  const [isEnabled, toggleEnabled] = useToggle(true);
+
+  return (
+    <div>
+      <p>Status: {isEnabled ? "Enabled" : "Disabled"}</p>
+      <button onClick={toggleEnabled}>Toggle</button>
+    </div>
+  );
+}
+```
+
+### Notes
+
+- The `toggle` function is memoized using `useCallback` for optimal performance.
+- Perfect for managing simple boolean states like modals, dropdowns, checkboxes, or any on/off functionality.
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
